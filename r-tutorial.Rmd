@@ -52,6 +52,7 @@ Once R is installed, run these commands to install useful packages:
 install.packages("data.table") # big data management
 install.packages("ggplot2") # graphing
 install.packages("lfe") # fixed effects models
+install.packages("AER") # IV regressions
 install.packages("styler") # code style
 install.packages("devtools") # package development
 install.packages("roxygen2") # package documentation
@@ -94,7 +95,7 @@ Before getting into R, here are the answers to the questions I have heard the mo
 <!-----------------------------------------------------> 
 
 
-# Introduction to 4 Workhorse Objects 
+# I. Introduction to 4 Workhorse Objects 
 
 ## Overview: 4 Workhorse Objects 
 
@@ -239,7 +240,7 @@ Provide examples that work as expected when `FtoC=TRUE` and when `FtoC=FALSE`, a
 <!-----------------------------------------------------> 
 
 
-# Data Analysis, Visualization, and Import/Export
+# II. Data Analysis, Visualization, and Import/Export
 
 
 ## Overview
@@ -247,8 +248,8 @@ Provide examples that work as expected when `FtoC=TRUE` and when `FtoC=FALSE`, a
 This section shows how to analyze panel data in R:
 
 1. Simulating panel data from a given DGP;
-2. Computing aggregate statistic;
-3. Plotting relationships;
+2. Computing aggregate statistics;
+3. Plotting bivariate relationships;
 4. OLS and fixed effect regressions;
 5. Constructing lags and differences; and,
 6. Importing/exporting results.
@@ -469,11 +470,11 @@ Finally, export the matrix of regression coefficients, standard errors, and p-va
 <!-----------------------------------------------------> 
 <!-----------------------------------------------------> 
 
-# Style and Structure Rules
+# III. Style and Structure Rules
 
 ## Overview
 
-The tidyverse coding style, which is derived from Google's R style guide, is available here: <http://style.tidyverse.org/>. However, it does not cover issues of scoping or when to check for erros, which are key.
+The tidyverse coding style, which is derived from Google's R style guide, is available here: <http://style.tidyverse.org/>. However, it does not cover issues of scoping or when to check for errors, which are key.
 
 Note: The *styler* package can re-write your code to satisfy the style guide. It does things like automatically replace equals (a = 3) with arrows (a <- 3), and replace single quotes ('hello') with double quotes ("hello"). It has an RStudio plug-in for ease of use. I highly recommend using styler, especially when you are new to R and still learning its style. (All of my code here was edited by styler.)
 
@@ -608,7 +609,11 @@ f(data = dd, a = c(2, 3, 4))
 <!-----------------------------------------------------> 
 ## Quiz #3: Style and Structure
 
-Rewrite the codes you wrote for Quiz #1 and #2 to satisfy all of the style and structure rules. Save these as separate files so you can compare before/after. [Hint: the `style_active_file()` function from the *styler* package can do a lot of the work.]
+Rewrite the codes you wrote for Quiz #1 and #2 to satisfy all of the style and structure rules. [Hint: the `style_active_file()` function from the *styler* package can do a lot of the work.]
+
+Save these as separate files so you can compare before/after.  
+
+Note that coming up with useful error checks is as much an art as a science, as you need to anticipate possible mistakes you or another user could make.
 
 
 
@@ -626,7 +631,7 @@ Rewrite the codes you wrote for Quiz #1 and #2 to satisfy all of the style and s
 <!-----------------------------------------------------> 
 <!-----------------------------------------------------> 
 
-# Developing a Package (IN PROGRESS)
+# IV. Developing a Package (IN PROGRESS)
 
 ## Why Use Packages?
 

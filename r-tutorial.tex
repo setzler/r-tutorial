@@ -143,6 +143,7 @@ Once R is installed, run these commands to install useful packages:
 \KeywordTok{install.packages}\NormalTok{(}\StringTok{"data.table"}\NormalTok{) }\CommentTok{# big data management}
 \KeywordTok{install.packages}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{) }\CommentTok{# graphing}
 \KeywordTok{install.packages}\NormalTok{(}\StringTok{"lfe"}\NormalTok{) }\CommentTok{# fixed effects models}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"AER"}\NormalTok{) }\CommentTok{# IV regressions}
 \KeywordTok{install.packages}\NormalTok{(}\StringTok{"styler"}\NormalTok{) }\CommentTok{# code style}
 \KeywordTok{install.packages}\NormalTok{(}\StringTok{"devtools"}\NormalTok{) }\CommentTok{# package development}
 \KeywordTok{install.packages}\NormalTok{(}\StringTok{"roxygen2"}\NormalTok{) }\CommentTok{# package documentation}
@@ -192,8 +193,8 @@ heard the most about it:
 
 \end{frame}
 
-\section{Introduction to 4 Workhorse
-Objects}\label{introduction-to-4-workhorse-objects}
+\section{I. Introduction to 4 Workhorse
+Objects}\label{i.-introduction-to-4-workhorse-objects}
 
 \begin{frame}{Overview: 4 Workhorse Objects}
 
@@ -272,11 +273,11 @@ construct a \texttt{data.table} and add a column to it:
 \end{Shaded}
 
 \begin{verbatim}
-##    year      value person
-## 1:    1  0.3064664   John
-## 2:    1  0.4721921   Mary
-## 3:    2 -1.4982002   John
-## 4:    2  0.8857153   Mary
+##    year       value person
+## 1:    1 -2.19887302   John
+## 2:    1 -0.93627678   Mary
+## 3:    2  0.04338172   John
+## 4:    2 -0.70776538   Mary
 \end{verbatim}
 
 \normalsize
@@ -345,11 +346,11 @@ any other type of R object as an element with a string as the key:
 ## [1] 1 2 8
 ## 
 ## $`a data.table`
-##    year      value person
-## 1:    1  0.3064664   John
-## 2:    1  0.4721921   Mary
-## 3:    2 -1.4982002   John
-## 4:    2  0.8857153   Mary
+##    year       value person
+## 1:    1 -2.19887302   John
+## 2:    1 -0.93627678   Mary
+## 3:    2  0.04338172   John
+## 4:    2 -0.70776538   Mary
 ## 
 ## $`a function`
 ## function (arg1, arg2 = 3.5) 
@@ -450,8 +451,8 @@ Provide examples that work as expected when \texttt{FtoC=TRUE} and when
 
 \end{frame}
 
-\section{Data Analysis, Visualization, and
-Import/Export}\label{data-analysis-visualization-and-importexport}
+\section{II. Data Analysis, Visualization, and
+Import/Export}\label{ii.-data-analysis-visualization-and-importexport}
 
 \begin{frame}{Overview}
 
@@ -463,9 +464,9 @@ This section shows how to analyze panel data in R:
 \item
   Simulating panel data from a given DGP;
 \item
-  Computing aggregate statistic;
+  Computing aggregate statistics;
 \item
-  Plotting relationships;
+  Plotting bivariate relationships;
 \item
   OLS and fixed effect regressions;
 \item
@@ -829,13 +830,14 @@ felm organize their results somewhat differently.{]}
 
 \end{frame}
 
-\section{Style and Structure Rules}\label{style-and-structure-rules}
+\section{III. Style and Structure
+Rules}\label{iii.-style-and-structure-rules}
 
 \begin{frame}{Overview}
 
 The tidyverse coding style, which is derived from Google's R style
 guide, is available here: \url{http://style.tidyverse.org/}. However, it
-does not cover issues of scoping or when to check for erros, which are
+does not cover issues of scoping or when to check for errors, which are
 key.
 
 Note: The \emph{styler} package can re-write your code to satisfy the
@@ -1075,14 +1077,19 @@ Here, I will make two mistakes:
 \begin{frame}[fragile]{Quiz \#3: Style and Structure}
 
 Rewrite the codes you wrote for Quiz \#1 and \#2 to satisfy all of the
-style and structure rules. Save these as separate files so you can
-compare before/after. {[}Hint: the \texttt{style\_active\_file()}
+style and structure rules. {[}Hint: the \texttt{style\_active\_file()}
 function from the \emph{styler} package can do a lot of the work.{]}
+
+Save these as separate files so you can compare before/after.
+
+Note that coming up with useful error checks is as much an art as a
+science, as you need to anticipate possible mistakes you or another user
+could make.
 
 \end{frame}
 
-\section{Developing a Package (IN
-PROGRESS)}\label{developing-a-package-in-progress}
+\section{IV. Developing a Package (IN
+PROGRESS)}\label{iv.-developing-a-package-in-progress}
 
 \begin{frame}{Why Use Packages?}
 
