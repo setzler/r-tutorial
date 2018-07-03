@@ -20,14 +20,14 @@ temp_convert <- function(temperature, FtoC=TRUE, options) {
   if (!option1 %in% options) {
     stop("error: options$option1 must exist")
   }
-  dt <- data.table(Type = c("Celsius", "Fahrenheit"), Degrees = c(c_temp, f_temp))
+  dt <- data.table(Celsius = c_temp, Fahrenheit = f_temp)
   return(dt)
 }
 
 test_options <- list("option1" <- 5, "option2" <- 2)
-temp_convert(70, FtoC=TRUE, test_options)
-temp_convert(15, FtoC=FALSE, test_options)
+temp_convert(c(32, 70), FtoC=TRUE, test_options)
+temp_convert(c(100, 18), FtoC=FALSE, test_options)
 
 # without option1 as an argument of options
 bad_options <- list("option4" <- 3, "option5" <- 2)
-temp_convert(70, FtoC=TRUE, bad_options)
+temp_convert(c(32, 70), FtoC=TRUE, bad_options)
