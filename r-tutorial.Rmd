@@ -633,7 +633,7 @@ Note that coming up with useful error checks is as much an art as a science, as 
 <!-----------------------------------------------------> 
 <!-----------------------------------------------------> 
 
-# IV. Developing a Package (IN PROGRESS)
+# IV. Developing a Package 
 
 ## Why Use Packages?
 
@@ -662,7 +662,7 @@ The main directories of an R package are:
 
 - R: this contains your .R scripts run when your package is loaded;
 - man: this contains your documentation .md manuals; and,
-- inst: this contains tests and other things that should NOT be run when the package is loaded (note: you will have to create this folder yourself).
+- inst: this contains tests and other things that should NOT be run when the package is loaded (note: you will have to create this folder yourself since RStudio does not do this automatically).
 
 To launch the package, double-click on the .RProj icon.
 
@@ -726,7 +726,12 @@ When you run the command `roxygenize()` from the package *roxygen2*, it compiles
 <!-----------------------------------------------------> 
 ## Quiz on Package Development
 
+Find quiz4_materials.R. This is a set of functions that I have written to make highly customized LaTeX tables in R. Your assignment is to convert these functions into a package called *textables*. This will require the following:
 
+- organize the functions into a package with appropriate DESCRIPTION and NAMESPACE (author: Bradley Setzler);
+- functions need correct style, structure, error checks, comments, and documentation;
+- add examples and tests to the inst/ folder;
+- make sure it passes Check and can be compiled/installed.
 
 
 

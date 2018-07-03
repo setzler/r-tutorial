@@ -274,10 +274,10 @@ construct a \texttt{data.table} and add a column to it:
 
 \begin{verbatim}
 ##    year      value person
-## 1:    1  2.0545907   John
-## 2:    1  0.2846667   Mary
-## 3:    2 -1.7550293   John
-## 4:    2  1.1752397   Mary
+## 1:    1  1.5206060   John
+## 2:    1 -0.1080404   Mary
+## 3:    2  1.8010454   John
+## 4:    2  0.8358732   Mary
 \end{verbatim}
 
 \normalsize
@@ -347,10 +347,10 @@ any other type of R object as an element with a string as the key:
 ## 
 ## $`a data.table`
 ##    year      value person
-## 1:    1  2.0545907   John
-## 2:    1  0.2846667   Mary
-## 3:    2 -1.7550293   John
-## 4:    2  1.1752397   Mary
+## 1:    1  1.5206060   John
+## 2:    1 -0.1080404   Mary
+## 3:    2  1.8010454   John
+## 4:    2  0.8358732   Mary
 ## 
 ## $`a function`
 ## function (arg1, arg2 = 3.5) 
@@ -1093,8 +1093,7 @@ could make.
 
 \end{frame}
 
-\section{IV. Developing a Package (IN
-PROGRESS)}\label{iv.-developing-a-package-in-progress}
+\section{IV. Developing a Package}\label{iv.-developing-a-package}
 
 \begin{frame}{Why Use Packages?}
 
@@ -1135,7 +1134,7 @@ The main directories of an R package are:
 \item
   inst: this contains tests and other things that should NOT be run when
   the package is loaded (note: you will have to create this folder
-  yourself).
+  yourself since RStudio does not do this automatically).
 \end{itemize}
 
 To launch the package, double-click on the .RProj icon.
@@ -1229,6 +1228,25 @@ the command \texttt{?compute\_worker\_rents} and a help manual appears.
 \end{frame}
 
 \begin{frame}{Quiz on Package Development}
+
+Find quiz4\_materials.R. This is a set of functions that I have written
+to make highly customized LaTeX tables in R. Your assignment is to
+convert these functions into a package called \emph{textables}. This
+will require the following:
+
+\begin{itemize}
+\tightlist
+\item
+  organize the functions into a package with appropriate DESCRIPTION and
+  NAMESPACE (author: Bradley Setzler);
+\item
+  functions need correct style, structure, error checks, comments, and
+  documentation;
+\item
+  add examples and tests to the inst/ folder;
+\item
+  make sure it passes Check and can be compiled/installed.
+\end{itemize}
 
 \end{frame}
 
