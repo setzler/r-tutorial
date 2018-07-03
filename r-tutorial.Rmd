@@ -431,6 +431,8 @@ write.csv(obsdata, file = "observed_data.csv", row.names = F, na = " ")
 obsdata <- setDT(read.csv(file = "observed_data.csv"))
 ```
 
+Tip: always use setDT() instead of as.data.table() to convert an object into a data.table, since setDT saves on memory by not making a copy.
+
 Here is how to save a ggplot2 object as a PDF figure:
 
 ```{r echo = TRUE, size="footnotesize", eval=F}
@@ -450,11 +452,11 @@ Y_{i,t} = \alpha + \beta X_{i,t} + t\kappa  + \mu_i + \epsilon_{i,t}.
 
 Instead of being iid, let $X_{i,t}$ also depends on $\epsilon_{i,t}$. Furthermore, draw an observed variable $Z_{i,t}$ which is independent of $\epsilon_{i,t}$, and have $X_{i,t}$ also depend on $Z_{i,t}$. The observed data is now $(Y_{i,t},X_{i,t},Z_{i,t})$.
 
-Demonstrate how to estimate $\beta$ using the command `ivreg` from package *AER*, where we treat $X_{i,t}$ as the endogenous variable and $Z_{i,t}$ as the instrumental variable.
+Demonstrate how to estimate $\beta$ using the command `ivreg` from package *AER*, where we treat $X_{i,t}$ as the endogenous variable and $Z_{i,t}$ as the instrumental variable. Compare the `ivreg` result to using` lm` ingoring $Z_{i,t}$.
 
 Then, use felm to estimate the same instrumental variables regression more efficiently. [Hint: In felm, the instrumental variables notation looks like `felm_formula <- as.formula("Y ~ time | id | (X ~ Z)")`.] 
 
-Finally, export the matrix of regression coefficients, standard errors, and p-values from ivreg and felm as CSV file. [Note that ivreg and felm organize their results somewhat differently.]
+Export the results on coefficient estimates, standard errors, and p-values from `lm`, `ivreg`, and `felm` as CSV files. [Note that each of these organizes results somewhat differently.]
 
 
 
@@ -648,23 +650,77 @@ Note that coming up with useful error checks is as much an art as a science, as 
 
 
 <!-----------------------------------------------------> 
-## Creating a .RProject and Organizing Package Contents
+## Creating a .RProj and Organizing Package 
 
-This is easy with RStudio.
+This is easy with RStudio. Just go to:
+
+File -> New Project -> New Directory -> R Package
+
+Then, give your directory and R package a name, and it will create a skeleton package in the appropriate structure. 
+
+The main directories of an R package are:
+
+- R: this contains your .R scripts run when your package is loaded;
+- man: this contains your documentation .md manuals; and,
+- inst: this contains tests and other things that should NOT be run when the package is loaded (note: you will have to create this folder yourself).
+
+To launch the package, double-click on the .RProj icon.
+
+
+
+
+
+<!-----------------------------------------------------> 
+## Creating a .RProj and Organizing Package (cont.)
+
+Two files contain essential information:
+
+- DESCRIPTION: You need to add a line that lists the other packages that your package uses, for example:
+
+`Imports: data.table, lfe`
+
+- NAMESPACE: this file lists objects that will be exported (that is, available in the workspace) when your package is loaded. For example, if you have a function called `compute_worker_rents`, and your package relies on data.table, you should add lines in NAMESPACE that say:
+
+`import(data.table)`
+
+`export(compute_worker_rents)`
+
 
 
 <!-----------------------------------------------------> 
 ## Writing Documentation
 
-Example of function with documentation:
+Example of a function with documentation:
 
-Later, we will use the command roxygenize() from the package roxygen2 to compile the documentation.
+```{r echo = TRUE, size="footnotesize"}
+
+#' Function to compute worker rents
+#'
+#' @description
+#' This is a function that computes worker rents using the formula
+#'  derived by Lamadon, Mogstad, and Setzler (2018).
+#'  It returns the rents that go to the worker as a scalar.
+#'   
+#' @param sum_of_wages Sum of all wages in the sample (numeric).
+#' @param beta_preference The beta parameter estimate (numeric).
+#' 
+compute_worker_rents <- function(sum_of_wages, beta_preference) {
+  return(sum_of_wages / (1 + beta_preference))
+}
+
+```
+
+When you run the command `roxygenize()` from the package *roxygen2*, it compiles all documentation into help manuals. Then, if you need to see the documentation for this function, you simply use the command `?compute_worker_rents` and a help manual appears.
 
 
 
 <!-----------------------------------------------------> 
 ## Building, checking, compiling, and installing
 
+- To build your package, just click the Build & Reload button in RStudio.
+- To check your package for errors (even missing documentation), use the Check button in RStudio. Read the log to see what mistakes you have made.
+- To compile your package, go to the command line (outside of R) and run `R CMD BUILD name_of_package`, where name_of_package is whatever your package is called. This will create a compressed file called name_of_package.tar.gz.
+- To install your compiled package (which should be called name_of_package.tar.gz), use `R CMD INSTALL name_of_package`. 
 
 
 <!-----------------------------------------------------> 
