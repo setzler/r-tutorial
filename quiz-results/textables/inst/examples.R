@@ -19,7 +19,7 @@ outtab <- c(
   toprule(),
   midrule(),
   titlerow(" ", "Results at the Worker-level", numcol - 1),
-  numrow(" ", dd$group),
+  stringrow(" ", dd$group),
   partmidrule(2, numcol),
   numrow("Effect of X on Y", dd$coef, pvec = dd$p, dec = 3),
   numrow(" ", dd$se, dec = 3, se = T),
@@ -34,6 +34,6 @@ outtab <- c(
 outtab <- c(beginDoc(), outtab, endDoc())
 
 ## export the table as .tex
-openfile <- file("quiz4_example.tex")
+openfile <- file("inst/quiz4_example.tex")
 writeLines(outtab, openfile)
 close(openfile)
