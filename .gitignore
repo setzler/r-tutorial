@@ -244,3 +244,4 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
+.Rproj.user
