@@ -3,7 +3,8 @@
 The tutorial is available as a slideshow in the file called *r-tutorial.pdf*. 
 
 The tutorial is organized as follows:
-I. Introduction to 4 Workhorse Objects
+
+### I. Introduction to 4 Workhorse Objects
 
     - vector,
     - data.table,
@@ -11,7 +12,7 @@ I. Introduction to 4 Workhorse Objects
     - list,
     - quiz #1.
     
-II. Data Analysis, Visualization, and Import/Export
+### II. Data Analysis, Visualization, and Import/Export
 
     - simulating panel data,
     - computing aggregate statistics (using data.table),
@@ -20,14 +21,14 @@ II. Data Analysis, Visualization, and Import/Export
     - importing/exporting results,
     - quiz #2 (using IV regression).
     
-III. Style and Structure Rules
+### III. Style and Structure Rules
 
     - using informative object names,
     - controlling scope,
     - checking for errors,
     - quiz #3 (using checkmate and styler).
     
-IV. Developing a Package
+### IV. Developing a Package
 
     - creating and structuring an R package,
     - writing package documentation,
