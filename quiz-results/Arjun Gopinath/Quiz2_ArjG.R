@@ -39,9 +39,11 @@ ddata_panel[, Y := param$alp + param$bet * X + time * param$kap + mu + eps]
 observed_data <- ddata_panel [, .(id, time, Y, X, Z)]
 
 # Running an OLS regression, ignoring Z
+
 OLS_formula <- as.formula("Y ~ X + time + as.factor(id)")
 OLS_result <- lm(formula = OLS_formula, data = observed_data) # regression
 OLS_coef <- coef(summary(OLS_result))
+
 
 # Running an IV regression
 IV_formula <- as.formula("Y ~ X + time + as.factor(id) | time + as.factor(id) + Z")
@@ -65,6 +67,6 @@ FELM_kappa <- FELM_coef[1, ]
 results_beta <- rbind(OLS_beta, IV_beta, FELM_beta)
 results_kappa <- rbind(OLS_kappa, IV_kappa, FELM_kappa)
 
-write.csv(rbind(results_beta, results_kappa),
-  file = "IVresults.csv", row.names = T, na = " "
-)
+
+write.csv(rbind(results_beta, results_kappa), 
+          file = "IVresults.csv", row.names = T, na = " ")
