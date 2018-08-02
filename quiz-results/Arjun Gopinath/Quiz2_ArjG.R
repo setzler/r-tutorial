@@ -42,8 +42,8 @@ observed_data = ddata [, .(id, time, Y, X, Z)]
 
 # Running an OLS regression, ignoring Z
 OLS_formula = as.formula("Y ~ X + time + as.factor(id)")
-OLS_result = lm(formula = OLS_formula_base, data = observed_data) # regression
-OLS_coef = coef(summary(OLS_result_base))
+OLS_result = lm(formula = OLS_formula, data = observed_data) # regression
+OLS_coef = coef(summary(OLS_result))
 
 # Running an IV regression
 IV_formula = as.formula("Y ~ X + time + as.factor(id) | time + as.factor(id) + Z")
