@@ -1,8 +1,6 @@
 # Arjun Gopinath - Aug 2 2018
 # R Tutorial Quiz 2
 
-setwd("C:/Users/arjar/OneDrive/Documents/BFI-Research/Code/introtoR")
-
 library(data.table)
 library(ggplot2)
 library(AER)
@@ -42,8 +40,8 @@ observed_data = ddata [, .(id, time, Y, X, Z)]
 
 # Running an OLS regression, ignoring Z
 OLS_formula = as.formula("Y ~ X + time + as.factor(id)")
-OLS_result = lm(formula = OLS_formula_base, data = observed_data) # regression
-OLS_coef = coef(summary(OLS_result_base))
+OLS_result = lm(formula = OLS_formula, data = observed_data) # regression
+OLS_coef = coef(summary(OLS_result))
 
 # Running an IV regression
 IV_formula = as.formula("Y ~ X + time + as.factor(id) | time + as.factor(id) + Z")
@@ -72,3 +70,4 @@ results_kappa = rbind(results_kappa, FELM_kappa)
 
 write.csv(rbind(results_beta, results_kappa), 
           file = "IVresults.csv", row.names = T, na = " ")
+
