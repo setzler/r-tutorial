@@ -8,21 +8,6 @@ library(data.table)
 conv_temp <- function(temperature, FtoC = TRUE, options) {
 
   # Check if temperature is a numeric vector.
-  if (!(is.numeric(temperature))) {
-    stop("Temperature must be a numeric vector.")
-  }
-  
-  # Check if FtoC is a boolean.
-  if ((!(is.logical(FtoC))) || (length(FtoC) != 1)) {
-    stop("FtoC must be a single Boolean variable.")
-  }  
-  
-  # Check if options is a list.
-  if (!(class(options) == "list")) {
-    stop("Options must be a list.")
-  }
-  
-  # Check if temperature is a numeric vector.
     if (!(is.numeric(temperature))) {
     stop("Temperature must be a numeric vector.")
   }
