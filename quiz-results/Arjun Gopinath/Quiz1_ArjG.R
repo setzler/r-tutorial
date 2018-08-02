@@ -22,6 +22,29 @@ conv_temp <- function(temperature, FtoC = TRUE, options) {
     stop("Options must be a list.")
   }
   
+  # Check if temperature is given in F. If true, convert to C
+  if (FtoC == TRUE) {
+    fahrenheit = temperature
+    celsius = (temperature - 32) * 5 / 9
+  } 
+  
+  # If false, convert temperature to F
+  else {
+    celsius = temperature
+    fahrenheit = (temperature * 9 / 5) + 32
+  }
+  
+  # Check if options contains option1. 
+  if (!("option1" %in% options)) {
+    stop("options$option1 must exist.") 
+  }
+  
+  # Tabulate results into a data table.
+  results_table <- data.table(Celsius = celsius, Fahrenheit = fahrenheit)
+  
+  # Return as output.
+  return(results_table)
+}
 
 # Different examples to prove that the code works.
 
