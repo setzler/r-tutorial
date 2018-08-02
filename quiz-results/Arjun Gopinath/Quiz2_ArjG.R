@@ -1,8 +1,6 @@
 # Arjun Gopinath - Aug 2 2018
 # R Tutorial Quiz 2
 
-setwd("C:/Users/arjar/OneDrive/Documents/BFI-Research/Code/introtoR")
-
 library(data.table)
 library(ggplot2)
 library(AER)
@@ -72,3 +70,4 @@ results_kappa = rbind(results_kappa, FELM_kappa)
 
 write.csv(rbind(results_beta, results_kappa), 
           file = "IVresults.csv", row.names = T, na = " ")
+
